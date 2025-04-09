@@ -1,0 +1,95 @@
+.application-status {
+  .application-details {
+    .app-message {
+      text-align: center;
+      padding: 0 30px;
+
+      @media (max-width: 1200px) {
+        padding: 0;
+      }
+
+      @media (max-width: 992px) {
+        padding: 0 30px;
+      }
+
+      @media (max-width: 768px) {
+        padding: 0;
+      }
+
+      h1 {
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 22px;
+        color: #29256e;
+        line-height: 28px;
+        padding: 15px 0;
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
+      }
+
+      p {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 16px;
+        color: #727272;
+        padding-bottom: 25px;
+
+        @media (max-width: 768px) {
+          font-size: 14px;
+        }
+      }
+
+      .note {
+        padding: 10px;
+        border-radius: 6px;
+        background: #fff6e0;
+        text-align: center;
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 14px;
+        color: #947e49;
+
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+
+      .action-btn {
+        padding-top: 20px;
+      }
+    }
+  }
+
+  .application-details.cong {
+    .app-message h1 {
+      padding: 0 0 15px 0;
+    }
+
+    .app-message .action-btn {
+      padding-top: 45px;
+
+      @media(max-width:768px) {
+        padding-top: 33px;
+      }
+    }
+
+    .app-message p {
+      padding-bottom: 15px;
+      font-weight: 500;
+
+      @media(max-width:768px) {
+        font-weight: 400;
+      }
+    }
+
+    .our-platform {
+      padding-top: 35px;
+
+      @media(max-width:768px) {
+        padding-top: 25px;
+      }
+    }
+  }
+}

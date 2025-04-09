@@ -1,0 +1,86 @@
+.hero-detail {
+  .hero-detail-upper {
+    text-align: center;
+    padding-top: 40px;
+
+    .iifl-logo {
+      @media (max-width: 768px) {
+        width: 171px;
+        height: 30px;
+      }
+    }
+
+    h1 {
+      margin: auto;
+      margin-top: 50px;
+      margin-bottom: 10px;
+      width: 450px;
+      font-family: Poppins;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 42px;
+      background: linear-gradient(91.96deg, #5f2eca 1.65%, #cd83f2 101.45%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @media (max-width: 768px) {
+        margin-top: 25px;
+        width: 100%;
+        font-size: 28px;
+        line-height: 36px;
+      }
+    }
+
+    .hero-image {
+      position: relative;
+      width: fit-content;
+      margin: auto;
+
+      @media (max-width: 992px) {
+        display: none;
+      }
+
+      .coinImg {
+        position: absolute;
+        right: -25px;
+        bottom: 50px;
+      }
+    }
+
+    .statusImg {
+      padding-top: 50px;
+
+      @media (max-width: 1200px) {
+        img {
+          width: 400px;
+          height: 400px;
+        }
+      }
+
+      @media (max-width: 1100px) {
+        img {
+          width: 380px;
+          height: 380px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        display: none;
+      }
+    }
+  }
+
+  .gene-detail-wrap {
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hero-detail.hide {
+    display: none;
+  }
+}

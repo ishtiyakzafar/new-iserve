@@ -1,0 +1,63 @@
+.queries-box {
+  text-align: center;
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  left: 0;
+
+  @media (max-width: 768px) {
+    bottom: 20px;
+  }
+
+  h6 {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 13px;
+    color: #323232;
+    margin-bottom: 10px;
+  }
+
+  .queries {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    p {
+      display: flex;
+      align-items: center;
+      font-family: Poppins;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0px;
+      color: #767597;
+
+      small {
+        font-weight: 400;
+        font-size: 12px;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      img {
+        margin-right: 7px;
+      }
+
+      span {
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0px;
+        margin-left: 3px;
+      }
+    }
+
+    .phone {
+      border-right: 1px solid #c7c7c7;
+      padding-right: 10px;
+    }
+  }
+}

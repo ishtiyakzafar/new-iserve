@@ -1,0 +1,77 @@
+.form-heading {
+  text-align: center;
+  padding-bottom: 30px;
+
+  @media (max-width: 768px) {
+    padding-bottom: 20px;
+  }
+
+  p {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0px;
+    color: #323232;
+    margin-bottom: 10px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+
+    span {
+      font-family: Poppins;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0px;
+
+      @media (max-width: 768px) {
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+  }
+
+  small {
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0px;
+    color: #727272;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+
+    span {
+      font-family: Poppins;
+      font-weight: 600;
+      font-size: 16px;
+      padding-right: 5px;
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .confirmation {
+    img {
+      margin: 25px 0 15px 18px;
+
+      @media (max-width: 768px) {
+        margin: 0 0 15px 18px;
+        width: 95px;
+        height: 75px;
+      }
+    }
+
+    p span {
+      font-weight: 600;
+      color: #29256e;
+    }
+  }
+}
