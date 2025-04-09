@@ -2,9 +2,16 @@
 import React from 'react';
 import './HeroDetailSection.scss';
 import Image from 'next/image';
-import ServicesSection from '../ServicesSection/ServicesSection'
+import ServicesSection from '../ServicesSection/ServicesSection';
 
-const HeroDetailSection = ({ isAccountVerified, appStatus, applicationStep }: any) => {
+interface HeroDetailSectionProps {
+  isAccountVerified: boolean;
+  appStatus: string;
+  applicationStep: string;
+}
+
+
+const HeroDetailSection: React.FC<HeroDetailSectionProps> = ({ isAccountVerified, appStatus, applicationStep }) => {
 
   return (
     <div className={applicationStep === '1' ? 'hero-detail' : 'hero-detail hide'}>

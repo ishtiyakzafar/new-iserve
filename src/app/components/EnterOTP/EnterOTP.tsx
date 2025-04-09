@@ -2,7 +2,13 @@ import React from 'react';
 import './EnterOTP.scss';
 import VerificationInput from 'react-verification-input';
 
-const EnterOTP = ({ setOtp, otp }: any) => {
+interface EnterOTPProps {
+  setOtp: (step: string) => void;
+  otp: string;
+}
+
+
+const EnterOTP: React.FC<EnterOTPProps> = ({ setOtp, otp }) => {
   return (
     <div className='verify-otp'>
       <VerificationInput

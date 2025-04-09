@@ -2,7 +2,14 @@ import React from 'react';
 import './EnterEmail.scss';
 import { isValidEmail } from '@/lib/validation';
 
-const EnterEmail = ({ email, setEmail, isUserEmail, applicationStep }: any) => {
+interface EnterEmailProps {
+  email: string;
+  setEmail: (step: string) => void;
+  isUserEmail: boolean;
+  applicationStep: string;
+}
+
+const EnterEmail: React.FC<EnterEmailProps> = ({ email, setEmail, isUserEmail, applicationStep }) => {
   return (
     <>
       <div className="input-group">

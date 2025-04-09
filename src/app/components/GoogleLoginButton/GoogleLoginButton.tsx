@@ -7,7 +7,12 @@ type GoogleJwtPayload = {
   email: string;
 };
 
-const GoogleLoginButton = ({ setApplicationStep, setEmail }: any) => {
+interface GoogleLoginButtonProps {
+  setApplicationStep: (step: string) => void;
+  setEmail: (step: string) => void;
+}
+
+const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ setApplicationStep, setEmail }) => {
   const screenWidth = useScreenWidth();
 
   return (

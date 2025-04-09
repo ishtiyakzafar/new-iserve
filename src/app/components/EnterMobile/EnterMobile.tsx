@@ -1,7 +1,13 @@
 import './EnterMobile.scss';
 import { isValidMobile } from '@/lib/validation';
 
-const EnterMobile = ({ mobile, setMobile, applicationStep }: any) => {
+interface EnterMobileProps {
+  mobile: string;
+  setMobile: (step: string) => void;
+  applicationStep: string;
+}
+
+const EnterMobile: React.FC<EnterMobileProps> = ({ mobile, setMobile, applicationStep }) => {
   return (
     <>
       <div className="input-group">

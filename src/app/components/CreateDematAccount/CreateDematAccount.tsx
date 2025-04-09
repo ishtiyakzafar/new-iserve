@@ -13,7 +13,24 @@ import ApplicationStatus from '../ApplicationStatus/ApplicationStatus';
 import Copyright from '../Copyright/Copyright';
 
 
-const CreateDematAccount = ({ applicationStep, setApplicationStep, isAccountVerified, setIsAccountVerified, appStatus, setAppStatus }: any) => {
+interface CreateDematAccountProps {
+  applicationStep: string;
+  setApplicationStep: (step: string) => void;
+  isAccountVerified: boolean;
+  setIsAccountVerified: (verified: boolean) => void;
+  appStatus: string;
+  setAppStatus: (status: string) => void;
+}
+
+
+const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
+  applicationStep,
+  setApplicationStep,
+  isAccountVerified,
+  setIsAccountVerified,
+  appStatus,
+  setAppStatus
+}) => {
   const [mobile, setMobile] = useState("");
   const [otp, setOtp] = useState("");
   const [isUserEmail, setIsUserEmail] = useState(false);
@@ -21,7 +38,7 @@ const CreateDematAccount = ({ applicationStep, setApplicationStep, isAccountVeri
 
 
   // function to handle create user account
-  const handleCreateAccount = async (e: any) => {
+  const handleCreateAccount = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (applicationStep === '1') {
