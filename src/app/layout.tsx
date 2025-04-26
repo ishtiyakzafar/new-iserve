@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.scss";
 import AuthProvider from "./components/AuthProvider/AuthProvider";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://hv-camera-web-sg.s3-ap-southeast-1.amazonaws.com/hyperverge-web-sdk@8.14.1/src/sdk.min.js"
+          strategy="beforeInteractive" // Load before hydration
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthProvider>
           {children}

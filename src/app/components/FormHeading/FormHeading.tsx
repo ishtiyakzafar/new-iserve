@@ -1,16 +1,15 @@
 import React from 'react';
 import './FormHeading.scss';
 import Image from 'next/image';
+import { FormHeadingProps } from '@/interfaces/account';
 
-interface FormHeadingProps {
-  email: string;
-  mobile: string;
-  applicationStep: string;
-  isUserEmail: boolean;
-  setApplicationStep: (step: string) => void;
-}
-
-const FormHeading: React.FC<FormHeadingProps> = ({ email, mobile, applicationStep, isUserEmail, setApplicationStep }) => {
+const FormHeading: React.FC<FormHeadingProps> = ({
+  email,
+  mobile,
+  applicationStep,
+  isUserEmail,
+  setApplicationStep
+}) => {
   return (
     <div className="form-heading">
       {applicationStep === '1' &&

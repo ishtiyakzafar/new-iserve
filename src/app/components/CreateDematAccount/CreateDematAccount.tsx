@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CreateDematAccount.scss';
 import { isValidEmail, isValidMobile, isValidOtp } from '@/lib/validation';
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton';
@@ -11,23 +11,20 @@ import EnterOTP from '../EnterOTP/EnterOTP';
 import EnterEmail from '../EnterEmail/EnterEmail';
 import ApplicationStatus from '../ApplicationStatus/ApplicationStatus';
 import Copyright from '../Copyright/Copyright';
+import { CreateDematAccountProps } from '@/interfaces/account';
 
-
-interface CreateDematAccountProps {
-  applicationStep: string;
-  setApplicationStep: (step: string) => void;
-  isAccountVerified: boolean;
-  setIsAccountVerified: (verified: boolean) => void;
-  appStatus: string;
-  setAppStatus: (status: string) => void;
+declare global {
+  interface Window {
+    HyperKYCModule?: any;
+    HyperKycConfig?: any;
+  }
 }
-
 
 const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
   applicationStep,
   setApplicationStep,
   isAccountVerified,
-  setIsAccountVerified,
+  // setIsAccountVerified,
   appStatus,
   setAppStatus
 }) => {
@@ -35,6 +32,81 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
   const [otp, setOtp] = useState("");
   const [isUserEmail, setIsUserEmail] = useState(false);
   const [email, setEmail] = useState("");
+
+
+  useEffect(() => {
+    window.HyperKYCModule.prefetch({
+      appId: "m2slev",
+      workflowId: "iifl_main_onboarding",
+    });
+  }, [])
+
+  const handler = (HyperKycResult: any) => {
+    console.log('HyperKychandleCall')
+    alert('status ' + HyperKycResult.status);
+    switch (HyperKycResult.status) {
+      // ----Incomplete workflow-----
+      case "user_cancelled":
+        console.log('user_cancelled', HyperKycResult.status)
+        // <<Insert code block 1>>
+        break;
+      case "error":
+        console.log('error', HyperKycResult.status)
+        // <<Insert code block 2>>
+        break;
+      // ----Complete workflow-----
+      case "auto_approved":
+        console.log('auto_approved', HyperKycResult.status)
+        // <<Insert code block 3>>
+        break;
+      case "auto_declined":
+        console.log('auto_declined', HyperKycResult.status)
+        // <<Insert code block 4>>
+        break;
+        break;
+      case "needs_review":
+        console.log('needs_review', HyperKycResult.status)
+        // <<Insert code block 5>>
+        break;
+    }
+  }
+
+  const startHyperKycJourney = async () => {
+
+    const response = await fetch("https://auth.hyperverge.co/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "appId": "m2slev",
+        "appKey": "w5t4z5ze4ipk8cj7m687",
+        "expiry": 84600
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.statusCode === "200" && data.status === "success") {
+      // console.log('000000', data.result.token)
+
+      const accessToken = data.result.token;
+      const transactionId = "JHSKJ754HA45454XV123";
+      const workflowId = "iifl_main_onboarding";
+
+      const hyperKycConfig = new window.HyperKycConfig(accessToken, workflowId, transactionId);
+
+      hyperKycConfig.setUniqueId("550e8400-e29b-41d4-a716-446655440123");
+
+      hyperKycConfig.setInputs({
+        email: email,
+        lead_id: "lead123",
+        mobile_number: mobile
+      })
+
+      window.HyperKYCModule.launch(hyperKycConfig, handler);
+    }
+  }
 
 
   // function to handle create user account
@@ -53,7 +125,8 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
     } else if (applicationStep === '2' && isUserEmail) {
       setApplicationStep('4');
     } else if (applicationStep === '4') {
-      setIsAccountVerified(true);
+      startHyperKycJourney();
+      // setIsAccountVerified(true);
     }
   }
 

@@ -1,0 +1,54 @@
+trigger:
+  - main
+  - develop
+
+variables:
+  dockerRegistryUATServiceConnection: 'activation-acr-uat'
+  imageRepository: 'diy'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+
+  vmImageName: 'ubuntu-latest'
+
+stages:
+  - stage: BuildUAT
+    displayName: Build and Push Stage
+    jobs:
+      - job: Build
+        displayName: Build and Push Docker Image
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - task: Docker@2
+            displayName: 'Build Docker Image for $(Build.SourceBranchName)'
+            inputs:
+              command: build
+              containerRegistry: $(dockerRegistryUATServiceConnection)
+              repository: $(imageRepository)
+              Dockerfile: $(dockerfilePath)
+              tags: $(Build.BuildId)
+
+          - script: |
+              echo "Build ID: $(Build.BuildId)"
+            displayName: 'Print Build ID'
+
+          - task: Docker@2
+            displayName: 'Push Docker Image for $(Build.SourceBranchName)'
+            inputs:
+              command: push
+              containerRegistry: $(dockerRegistryUATServiceConnection)
+              repository: $(imageRepository)
+              tags: $(Build.BuildId)
+
+          - task: ArchiveFiles@2
+            displayName: 'Archive Kubernetes YAML Files'
+            inputs:
+              rootFolderOrFile: '$(System.DefaultWorkingDirectory)/k8s-yaml'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              replaceExistingArchive: true
+
+          - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+            displayName: 'Publish Artifact: k8s-yaml'
+            artifact: 'k8s-yaml'

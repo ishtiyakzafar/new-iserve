@@ -16,7 +16,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-verification-input": "^4.2.2",
-    "sass": "^1.86.2"
+    "sass": "^1.86.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

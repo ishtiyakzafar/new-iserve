@@ -1,16 +1,12 @@
 "use client";
 import useScreenWidth from "@/app/hooks/useScreenWidth";
+import { GoogleLoginButtonProps } from "@/interfaces/account";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
 type GoogleJwtPayload = {
   email: string;
 };
-
-interface GoogleLoginButtonProps {
-  setApplicationStep: (step: string) => void;
-  setEmail: (step: string) => void;
-}
 
 const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ setApplicationStep, setEmail }) => {
   const screenWidth = useScreenWidth();

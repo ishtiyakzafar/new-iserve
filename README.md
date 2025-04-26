@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DIY Onboarding Journey (NextJS Rewamp)  
 
-## Getting Started
+# This is the new Rewamp version of the DIY OnBoarding journey Written in NextJS   
+_A modern Rewamp of IIFL Capital's DIY onboarding portal with server-side rendering, optimized performance, and enhanced UX.
 
-First, run the development server:
+**A Registration Portal for IIFL Capital**  
+
+**Next.js 14 + TypeScript**  
+
+## 🌐 Environment URLs  
+
+---
+
+## 🌐 Environment URLs  
+| Environment   | URL                                   | Branch    |  
+|---------------|---------------------------------------|-----------|  
+| **uat**       | https://beta-register.iiflcapial.com/ | `UAT`     |  
+| **Production**| https://register.iiflcapial.com/      | `main`    |  
+
+---
+
+## 🗂 Repository Structure  
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+/fe-nextjs-onboarding-journey
+├── k8s-yaml/                        # Kubernetes YAML manifests  
+│   ├── deploy.yaml              # Deployment configuration  
+│   ├── service.yaml                 # Service configuration  
+│   ├── ingress.yaml                 # Ingress rules  
+│   ├── configmap.yaml               # ConfigMap for environment variables  
+│   └── svc-lb-pvt.yaml              # Service with Private LB configuration    
+├── public/                          
+│   ├── assets/                    
+│   │   ├── fonts/                   # Font files  
+│   │   ├── icons/                   # Icon files  
+│   │   ├── images/                  # Image assets  
+│   └── favicon.ico                  # Favicon for the app  
+├── src/                      
+│   ├── app/                         # Application logic and routes  
+│   │   ├── dashboard/               # Post-auth routes  
+│   │   │   ├── layout.tsx           # Auth-protected layout  
+│   │   │   └── profile/page.tsx     # Profile management  
+│   │   ├── api/                     # Route handlers (NextJS API)  
+│   │   │   ├── route.ts             # POST endpoint  
+│   │   │   └── user/[id]/route.ts   # Dynamic API route  
+│   │   └── page.tsx                 # Main entry point  
+│   ├── lib/                         # Utilities and helpers  
+│   │   ├── auth.ts                  # NextAuth.js config  
+│   │   └── api-client.ts            # Axios wrapper  
+├── .env.local                       # Local secrets   
+├── next.config.js                   # Next.js configuration  
+├── package.json                     # Project dependencies  
+└── tsconfig.json                    # TypeScript configuration  
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🛠 Tech Stack
+Framework: Next.js 14 (App Router)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Language: TypeScript 5.x
 
-## Learn More
+Styling: Tailwind CSS + ui
 
-To learn more about Next.js, take a look at the following resources:
+Auth: NextAuth.js (OAuth + JWT)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+API: NextJS Route Handlers + tRPC (optional)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Testing: Jest + React Testing Library
 
-## Deploy on Vercel
+CI/CD: Azure DevOps Pipelines
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git clone https://dev.azure.com/IIFLSecurities/Broking/_git/fe-nextjs-onboarding-journey
+cd fe-nextjs-onboarding-journey && npm install   && npm run dev 
+```
