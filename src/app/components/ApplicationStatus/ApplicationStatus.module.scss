@@ -1,6 +1,6 @@
-.application-status {
-  .application-details {
-    .app-message {
+.application_status {
+  .application_details {
+    .app_message {
       text-align: center;
       padding: 0 30px;
 
@@ -56,18 +56,18 @@
         }
       }
 
-      .action-btn {
+      .action_btn {
         padding-top: 20px;
       }
     }
   }
 
-  .application-details.cong {
-    .app-message h1 {
+  .application_details.cong {
+    .app_message h1 {
       padding: 0 0 15px 0;
     }
 
-    .app-message .action-btn {
+    .app_message .action_btn {
       padding-top: 45px;
 
       @media(max-width:768px) {
@@ -75,7 +75,7 @@
       }
     }
 
-    .app-message p {
+    .app_message p {
       padding-bottom: 15px;
       font-weight: 500;
 
@@ -84,7 +84,7 @@
       }
     }
 
-    .our-platform {
+    .our_platform {
       padding-top: 35px;
 
       @media(max-width:768px) {

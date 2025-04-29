@@ -1,13 +1,13 @@
 import { EnterMobileProps } from '@/interfaces/account';
-import './EnterMobile.scss';
+import s from "./EnterMobile.module.scss";
 import { isValidMobile } from '@/lib/validation';
 
 const EnterMobile: React.FC<EnterMobileProps> = ({ mobile, setMobile, applicationStep }) => {
   return (
     <>
-      <div className="input-group">
+      <div className="input_group__z7d_m4b">
         <label htmlFor="mobile">Mobile Number</label>
-        <div className={["6", "7", "8", "9"].includes(mobile.charAt(0)) ? 'input-box active' : 'input-box'}>
+        <div className={["6", "7", "8", "9"].includes(mobile.charAt(0)) ? `${s.input_box} ${s.active}` : s.input_box}>
           <span>+91</span>
           <input
             value={mobile}
@@ -27,7 +27,7 @@ const EnterMobile: React.FC<EnterMobileProps> = ({ mobile, setMobile, applicatio
       </div>
 
       {isValidMobile(mobile) && applicationStep === '1' &&
-        <div className="input-group consent">
+        <div className="input_group__z7d_m4b consent__w5b_d4r">
           <label htmlFor="consent">This number belongs to?</label>
           <select name="consent" id="consent">
             <option value="self">Self</option>

@@ -19,14 +19,14 @@
     justify-content: unset;
   }
 
-  .gen-info {
+  .gen_info {
     text-align: center;
 
     @media (max-width: 768px) {
       text-align: unset;
     }
 
-    .icon-box {
+    .icon_box {
       background: #fff;
       width: 40px;
       height: 40px;

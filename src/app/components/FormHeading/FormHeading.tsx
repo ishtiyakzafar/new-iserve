@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormHeading.scss';
+import s from "./FormHeading.module.scss";
 import Image from 'next/image';
 import { FormHeadingProps } from '@/interfaces/account';
 
@@ -11,7 +11,7 @@ const FormHeading: React.FC<FormHeadingProps> = ({
   setApplicationStep
 }) => {
   return (
-    <div className="form-heading">
+    <div className={s.form_heading}>
       {applicationStep === '1' &&
         <>
           <p>Get your <span>FREE Demat Account</span> and start trading in 5 min!</p>
@@ -39,7 +39,7 @@ const FormHeading: React.FC<FormHeadingProps> = ({
       }
 
       {applicationStep === '4' &&
-        <div className='confirmation'>
+        <div className={s.confirmation}>
           <Image aria-hidden src='/assets/icons/success.svg' alt="success" width={124} height={98} />
           <p><span>Email Verified!</span></p>
           <small>Email ID <span>{email}</span>has been successfully verified</small>

@@ -1,5 +1,5 @@
 "use client";
-import "./page.scss";
+import s from "./page.module.scss";
 import HeroDetailSection from "./components/HeroDetailSection/HeroDetailSection";
 import CreateDematAccount from "./components/CreateDematAccount/CreateDematAccount";
 import ServicesSection from "./components/ServicesSection/ServicesSection";
@@ -13,16 +13,14 @@ export default function Home() {
 
   return (
     <>
-      <div className="dashboard">
-        <div className="container">
-          <div className="hero">
-
+      <div className={s.dashboard}>
+        <div className={s.container}>
+          <div className={s.hero}>
             <HeroDetailSection
               isAccountVerified={isAccountVerified}
               appStatus={appStatus}
               applicationStep={applicationStep}
             />
-
             <CreateDematAccount
               applicationStep={applicationStep}
               setApplicationStep={setApplicationStep}
@@ -31,15 +29,14 @@ export default function Home() {
               appStatus={appStatus}
               setAppStatus={setAppStatus}
             />
-
-            <div className={applicationStep === '1' ? 'our-services' : !isAccountVerified ? 'our-services hide' : 'our-services isVerified'}>
+            <div className={applicationStep === '1' ? s.our_services : !isAccountVerified ? `${s.our_services} ${s.hide}` : `${s.our_services} ${s.isVerified}`}>
               <ServicesSection />
             </div>
           </div>
         </div>
       </div>
 
-      <div className={applicationStep === '1' ? 'show-copyright' : 'hide-copyright'}>
+      <div className={applicationStep === '1' ? s.show_copyright : s.hide_copyright}>
         <Copyright />
       </div>
     </>

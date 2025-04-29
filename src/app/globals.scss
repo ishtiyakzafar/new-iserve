@@ -3,6 +3,7 @@
 	font-style: normal;
 	font-weight: 300;
 	src: url("../../public/assets/fonts/Poppins/Poppins-Light.ttf");
+	font-display: swap;
 }
 
 @font-face {
@@ -10,6 +11,7 @@
 	font-style: normal;
 	font-weight: 400;
 	src: url("../../public/assets/fonts/Poppins/Poppins-Regular.ttf");
+	font-display: swap;
 }
 
 @font-face {
@@ -17,6 +19,7 @@
 	font-style: normal;
 	font-weight: 500;
 	src: url("../../public/assets/fonts/Poppins/Poppins-Medium.ttf");
+	font-display: swap;
 }
 
 @font-face {
@@ -24,6 +27,7 @@
 	font-style: normal;
 	font-weight: 600;
 	src: url("../../public/assets/fonts/Poppins/Poppins-SemiBold.ttf");
+	font-display: swap;
 }
 
 @font-face {
@@ -31,6 +35,7 @@
 	font-style: normal;
 	font-weight: 700;
 	src: url("../../public/assets/fonts/Poppins/Poppins-Bold.ttf");
+	font-display: swap;
 }
 
 @font-face {
@@ -38,6 +43,7 @@
 	font-style: normal;
 	font-weight: 800;
 	src: url("../../public/assets/fonts/Poppins/Poppins-ExtraBold.ttf");
+	font-display: swap;
 }
 
 @font-face {
@@ -45,15 +51,10 @@
 	font-style: normal;
 	font-weight: 900;
 	src: url("../../public/assets/fonts/Poppins/Poppins-Black.ttf");
+	font-display: swap;
 }
 
-.container {
-	margin: 0 auto;
-	max-width: 1300px;
-	padding: 0 15px;
-}
-
-.input-group {
+.input_group__z7d_m4b {
 	display: flex;
 	flex-direction: column;
 
@@ -106,7 +107,7 @@
 	}
 }
 
-.input-group.consent {
+.input_group__z7d_m4b.consent__w5b_d4r {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -135,7 +136,7 @@
 	}
 }
 
-button {
+.btn__q7s_l3z {
 	outline: none;
 	border: none;
 	width: 100%;
@@ -168,7 +169,7 @@ button {
 	}
 }
 
-.outline {
+.outline__k3p_s8r {
 	background: #fff;
 	border: 1px solid #7f7f7f;
 	color: #7f7f7f;
@@ -179,32 +180,6 @@ button {
 	}
 }
 
-.desktop-view {
-	@media (max-width: 768px) {
-		display: none;
-	}
-}
-
-.mobile-view {
-	display: none;
-
-	@media (max-width: 768px) {
-		display: block;
-	}
-}
-
-:root {
-	--background: #ffffff;
-	--foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #ffffff;
-		--foreground: #171717;
-	}
-}
-
 html,
 body {
 	max-width: 100vw;
@@ -212,8 +187,6 @@ body {
 }
 
 body {
-	color: var(--foreground);
-	background: var(--background);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

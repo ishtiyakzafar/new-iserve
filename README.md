@@ -14,8 +14,8 @@ _A modern Rewamp of IIFL Capital's DIY onboarding portal with server-side render
 ## 🌐 Environment URLs  
 | Environment   | URL                                   | Branch    |  
 |---------------|---------------------------------------|-----------|  
-| **uat**       | https://beta-register.iiflcapial.com/ | `UAT`     |  
-| **Production**| https://register.iiflcapial.com/      | `main`    |  
+| **uat**       | https://beta-register.iiflcapital.com/ | `UAT`     |  
+| **Production**| https://register.iiflcapital.com/      | `main`    |  
 
 ---
 

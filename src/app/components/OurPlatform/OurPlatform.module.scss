@@ -1,4 +1,4 @@
-.our-platform {
+.our_platform {
   padding-top: 40px;
 
   @media (max-width: 768px) {
@@ -19,7 +19,7 @@
     }
   }
 
-  .platform-option {
+  .platform_option {
     display: flex;
     gap: 50px;
     justify-content: center;
@@ -28,11 +28,11 @@
       gap: 20px;
     }
 
-    .app-box {
+    .app_box {
       width: 133px;
       text-align: center;
 
-      .app-name {
+      .app_name {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -45,12 +45,12 @@
         }
       }
 
-      .app-name.ttweb {
+      .app_name.ttweb {
         padding-top: 3px;
         padding-bottom: 3px;
       }
 
-      .app-img {
+      .app_img {
         display: flex;
         align-items: center;
         justify-content: center;

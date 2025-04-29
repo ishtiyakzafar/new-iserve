@@ -1,4 +1,4 @@
-import './ServicesSection.scss';
+import s from "./ServicesSection.module.scss";
 import Image from 'next/image';
 
 const servicesData = [
@@ -30,11 +30,11 @@ const servicesData = [
 
 const ServicesSection = () => {
   return (
-    <div className="services">
+    <div className={s.services}>
       {
         servicesData.map((item) => (
-          <div key={item.id} className="gen-info">
-            <div className="icon-box">
+          <div key={item.id} className={s.gen_info}>
+            <div className={s.icon_box}>
               <Image
                 aria-hidden
                 src={item.icon}

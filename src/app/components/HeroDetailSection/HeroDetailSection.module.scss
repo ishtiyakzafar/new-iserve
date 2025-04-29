@@ -1,9 +1,9 @@
-.hero-detail {
-  .hero-detail-upper {
+.hero_detail {
+  .hero_detail_upper {
     text-align: center;
     padding-top: 40px;
 
-    .iifl-logo {
+    .iifl_logo {
       @media (max-width: 768px) {
         width: 171px;
         height: 30px;
@@ -32,7 +32,7 @@
       }
     }
 
-    .hero-image {
+    .hero_image {
       position: relative;
       width: fit-content;
       margin: auto;
@@ -41,14 +41,14 @@
         display: none;
       }
 
-      .coinImg {
+      .coin_img {
         position: absolute;
         right: -25px;
         bottom: 50px;
       }
     }
 
-    .statusImg {
+    .status_img {
       padding-top: 50px;
 
       @media (max-width: 1200px) {
@@ -71,7 +71,7 @@
     }
   }
 
-  .gene-detail-wrap {
+  .gene_detail_wrap {
     @media (max-width: 992px) {
       display: none;
     }
@@ -80,7 +80,7 @@
 
 
 @media (max-width: 768px) {
-  .hero-detail.hide {
+  .hero_detail.hide {
     display: none;
   }
 }

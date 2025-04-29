@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.scss";
 import AuthProvider from "./components/AuthProvider/AuthProvider";
 import Script from "next/script";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Open Demat account",
@@ -28,11 +17,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
-          src="https://hv-camera-web-sg.s3-ap-southeast-1.amazonaws.com/hyperverge-web-sdk@8.14.1/src/sdk.min.js"
+          src="https://hv-camera-web-sg.s3-ap-southeast-1.amazonaws.com/hyperverge-web-sdk@9.3.1/src/sdk.min.js"
           strategy="beforeInteractive" // Load before hydration
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
         <AuthProvider>
           {children}
         </AuthProvider>

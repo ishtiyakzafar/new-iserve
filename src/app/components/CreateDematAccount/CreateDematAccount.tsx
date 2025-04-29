@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import './CreateDematAccount.scss';
+import s from "./CreateDematAccount.module.scss";
 import { isValidEmail, isValidMobile, isValidOtp } from '@/lib/validation';
 import GoogleLoginButton from '../GoogleLoginButton/GoogleLoginButton';
 import QueriesSection from '../QueriesSection/QueriesSection';
@@ -12,6 +12,7 @@ import EnterEmail from '../EnterEmail/EnterEmail';
 import ApplicationStatus from '../ApplicationStatus/ApplicationStatus';
 import Copyright from '../Copyright/Copyright';
 import { CreateDematAccountProps } from '@/interfaces/account';
+import axios from 'axios';
 
 declare global {
   interface Window {
@@ -35,11 +36,13 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
 
 
   useEffect(() => {
-    window.HyperKYCModule.prefetch({
-      appId: "m2slev",
-      workflowId: "iifl_main_onboarding",
-    });
-  }, [])
+    if (window.HyperKYCModule?.prefetch) {
+      window.HyperKYCModule.prefetch({
+        appId: process.env.NEXT_PUBLIC_HYPERVERGE_APP_ID,
+        workflowId: process.env.NEXT_PUBLIC_HYPERVERGE_WORK_FLOW_ID,
+      });
+    }
+  }, []);
 
   const handler = (HyperKycResult: any) => {
     console.log('HyperKychandleCall')
@@ -63,7 +66,6 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
         console.log('auto_declined', HyperKycResult.status)
         // <<Insert code block 4>>
         break;
-        break;
       case "needs_review":
         console.log('needs_review', HyperKycResult.status)
         // <<Insert code block 5>>
@@ -72,39 +74,29 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
   }
 
   const startHyperKycJourney = async () => {
+    try {
+      const response = await axios.get('/api/auth/hyperverge/access-token');
+      // console.log('Response data:', response.data);
 
-    const response = await fetch("https://auth.hyperverge.co/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        "appId": "m2slev",
-        "appKey": "w5t4z5ze4ipk8cj7m687",
-        "expiry": 84600
-      }),
-    });
+      if (response.data.statusCode === "200" && response.data.status === "success") {
+        const accessToken = response.data.result.token
+        const transactionId = "JHSKJ754HA45454XV123";
+        const workflowId = process.env.NEXT_PUBLIC_HYPERVERGE_WORK_FLOW_ID;
 
-    const data = await response.json();
+        const hyperKycConfig = new window.HyperKycConfig(accessToken, workflowId, transactionId);
 
-    if (data.statusCode === "200" && data.status === "success") {
-      // console.log('000000', data.result.token)
+        hyperKycConfig.setUniqueId("550e8400-e29b-41d4-a716-446655440123");
 
-      const accessToken = data.result.token;
-      const transactionId = "JHSKJ754HA45454XV123";
-      const workflowId = "iifl_main_onboarding";
+        hyperKycConfig.setInputs({
+          email: email,
+          lead_id: "lead123",
+          mobile_number: mobile
+        })
 
-      const hyperKycConfig = new window.HyperKycConfig(accessToken, workflowId, transactionId);
-
-      hyperKycConfig.setUniqueId("550e8400-e29b-41d4-a716-446655440123");
-
-      hyperKycConfig.setInputs({
-        email: email,
-        lead_id: "lead123",
-        mobile_number: mobile
-      })
-
-      window.HyperKYCModule.launch(hyperKycConfig, handler);
+        window.HyperKYCModule.launch(hyperKycConfig, handler);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
   }
 
@@ -143,18 +135,18 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
   }
 
   return (
-    <div className={`login-form ${applicationStep !== '1' ? 'mobile' : ''}`}>
+    <div className={`${s.login_form} ${applicationStep !== '1' ? `${s.mobile}` : ''}`}>
 
       {applicationStep !== '1' && applicationStep !== '4' &&
-        <div className='back-btn'>
+        <div className={s.back_btn}>
           <Image onClick={handleBackBtn} aria-hidden src='/assets/icons/west.svg' alt="west" width={21} height={14} />
         </div>
       }
 
-      <div className={`form-wrap ${isAccountVerified ? 'status' : ''}`}>
+      <div className={`${s.form_wrap} ${isAccountVerified ? `${s.status}` : ''}`}>
         <form onSubmit={handleCreateAccount}>
           {applicationStep !== '1' &&
-            <div className={`logo ${appStatus === '0' ? 'congrate' : isAccountVerified ? 'status' : ''}`}>
+            <div className={`${s.logo} ${appStatus === '0' ? `${s.congrate}` : isAccountVerified ? `${s.status}` : ''}`}>
               <Image
                 priority
                 aria-hidden
@@ -194,7 +186,7 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
               {applicationStep === '3' &&
                 <>
                   <GoogleLoginButton setApplicationStep={setApplicationStep} setEmail={setEmail} />
-                  <div className='line-divider'>OR</div>
+                  <div className={s.line_divider}>OR</div>
 
                   {isUserEmail &&
                     <EnterEmail
@@ -208,7 +200,7 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
               }
 
               {applicationStep === '4' &&
-                <div className="input-group consent email">
+                <div className="input_group__z7d_m4b consent__w5b_d4r email">
                   <label htmlFor="consent">This email belongs to?</label>
                   <select name="" id="consent">
                     <option value="self">Self</option>
@@ -217,9 +209,9 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
                 </div>
               }
 
-              <div className='form-btn'>
+              <div className={s.form_btn}>
                 <button
-                  className={applicationStep === '3' && !isUserEmail ? 'outline' : ''}
+                  className={applicationStep === '3' && !isUserEmail ? 'btn__q7s_l3z outline__k3p_s8r' : 'btn__q7s_l3z'}
                   disabled={
                     (applicationStep === '1' && !isValidMobile(mobile)) ||
                     (applicationStep === '2' && !isValidOtp(otp)) ||
@@ -234,9 +226,9 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
                 </button>
               </div>
 
-              {applicationStep === '2' && <div className='query-help'>Have any queries? <a href="">Get help</a></div>}
+              {applicationStep === '2' && <div className={s.query_help}>Have any queries? <a href="">Get help</a></div>}
 
-              <div className='desktop-view'>
+              <div className={s.desktop_view}>
                 <QueriesSection />
               </div>
             </>
@@ -245,11 +237,11 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
           }
 
           {applicationStep === '1' ?
-            <div className='mobile-view'>
+            <div className={s.mobile_view}>
               <QueriesSection />
             </div>
             :
-            <div className='mobile-copyright'>
+            <div className={s.mobile_copyright}>
               <Copyright />
             </div>
           }

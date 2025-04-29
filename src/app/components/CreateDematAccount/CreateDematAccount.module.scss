@@ -1,4 +1,4 @@
-.login-form {
+.login_form {
   position: relative;
   padding: 45px;
   border-radius: 30px;
@@ -34,7 +34,7 @@
     z-index: -1;
   }
 
-  .back-btn {
+  .back_btn {
     position: absolute;
     top: 30px;
     left: 30px;
@@ -45,7 +45,7 @@
     }
   }
 
-  .form-wrap {
+  .form_wrap {
     form {
       padding: 0 40px;
 
@@ -75,12 +75,12 @@
         margin-bottom: 0px;
       }
 
-      .input-group.consent.email {
+      .input_group__z7d_m4b.consent__w5b_d4r.email {
         justify-content: center;
         margin-top: 0;
       }
 
-      .line-divider {
+      .line_divider {
         position: relative;
         text-align: center;
         font-family: Poppins;
@@ -114,7 +114,7 @@
         }
       }
 
-      .query-help {
+      .query_help {
         font-family: Poppins;
         font-weight: 400;
         font-size: 12px;
@@ -130,7 +130,7 @@
         }
       }
 
-      .form-btn {
+      .form_btn {
         margin-top: 50px;
 
         @media (max-width: 768px) {
@@ -138,7 +138,7 @@
         }
       }
 
-      .mobile-copyright {
+      .mobile_copyright {
         display: none;
         position: absolute;
         left: 0;
@@ -149,10 +149,25 @@
           display: block;
         }
       }
+
+
+      .desktop_view {
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .mobile_view {
+        display: none;
+
+        @media (max-width: 768px) {
+          display: block;
+        }
+      }
     }
   }
 
-  .form-wrap.status {
+  .form_wrap.status {
     form {
       padding: 0;
     }
@@ -160,7 +175,7 @@
 }
 
 @media (max-width: 768px) {
-  .login-form.mobile {
+  .login_form.mobile {
     min-height: calc(100vh - 30px);
   }
 }

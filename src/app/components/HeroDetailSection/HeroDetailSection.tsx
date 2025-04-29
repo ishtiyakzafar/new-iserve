@@ -1,19 +1,19 @@
 "use client";
 import React from 'react';
-import './HeroDetailSection.scss';
+import s from "./HeroDetailSection.module.scss";
 import Image from 'next/image';
 import ServicesSection from '../ServicesSection/ServicesSection';
 import { HeroDetailSectionProps } from '@/interfaces/account';
 
 const HeroDetailSection: React.FC<HeroDetailSectionProps> = ({ isAccountVerified, appStatus, applicationStep }) => {
   return (
-    <div className={applicationStep === '1' ? 'hero-detail' : 'hero-detail hide'}>
-      <div className="hero-detail-upper">
+    <div className={applicationStep === '1' ? `${s.hero_detail}` : `${s.hero_detail} ${s.hide}`}>
+      <div className={s.hero_detail_upper}>
         <Image
           aria-hidden
           src="/assets/images/New Logo.svg"
           alt="Logo"
-          className='iifl-logo'
+          className={s.iifl_logo}
           width={256}
           height={45}
         />
@@ -21,7 +21,7 @@ const HeroDetailSection: React.FC<HeroDetailSectionProps> = ({ isAccountVerified
         {!isAccountVerified ?
           <>
             <h1>Explore a New World of Investment Opportunities!</h1>
-            <div className="hero-image">
+            <div className={s.hero_image}>
               <Image
                 priority
                 aria-hidden
@@ -31,7 +31,7 @@ const HeroDetailSection: React.FC<HeroDetailSectionProps> = ({ isAccountVerified
                 height={285}
               />
               <Image
-                className="coinImg"
+                className={s.coin_img}
                 aria-hidden
                 src="/assets/images/Frame.svg"
                 alt="Logo"
@@ -41,7 +41,7 @@ const HeroDetailSection: React.FC<HeroDetailSectionProps> = ({ isAccountVerified
             </div>
           </>
           :
-          <div className='statusImg'>
+          <div className={s.status_img}>
             <Image
               aria-hidden
               src={`/assets/images/bg${appStatus}.svg`}
@@ -54,7 +54,7 @@ const HeroDetailSection: React.FC<HeroDetailSectionProps> = ({ isAccountVerified
       </div>
 
       {!isAccountVerified &&
-        <div className='gene-detail-wrap'>
+        <div className={s.gene_detail_wrap}>
           <ServicesSection />
         </div>
       }
