@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import axios, { AxiosError } from 'axios';
-import https from 'https';
+// import https from 'https';
 
 export async function GET() {
   try {
@@ -15,9 +15,9 @@ export async function GET() {
         headers: {
           "Content-Type": "application/json"
         },
-        httpsAgent: new https.Agent({
-          rejectUnauthorized: false  // <=== Ignore SSL cert
-        })
+        // httpsAgent: new https.Agent({
+        //   rejectUnauthorized: false  // <=== Ignore SSL cert
+        // })
       }
     );
 
