@@ -26,7 +26,7 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
               />
               <h1>Congratulations!</h1>
               <p>Your account is activated. Start your trading now.</p>
-              <div className={s.note}>
+              <div className={`${s.note} ${s.allset}`}>
                 {`For login, you'll be redirected to TT Web where you need to enter Client ID and set new Password for your account.
                 Client ID is sent on your registered email ID.`}
               </div>
@@ -48,14 +48,15 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
               />
               <h1>All set! <br /> Your application is in.</h1>
               <p>Your client ID has been sent to your registered email. <br /> Sit tight while we activate your account.</p>
-              <div className={s.note}>
+              <div className={`${s.note} ${s.allset}`}>
                 {`You'll receive a notification on your registered email and mobile number when it's ready.`}
               </div>
             </>
           }
 
+
           {appStatus === '2' &&
-            <>
+            <div className={s.other_state}>
               <Image
                 onClick={() => setAppStatus('3')}
                 aria-hidden
@@ -65,17 +66,17 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
                 height={70}
               />
               <h1>Hang tight! <br /> Your request is in progress.</h1>
-              <p>{`We are reviewing your application! <br /> Sit tight, we'll update you once it's complete.`}</p>
+              <p>{`We are reviewing your application!`} <br /> {`Sit tight, we'll update you once it's complete.`}</p>
               <div className={s.note}>
                 {`You'll receive a notification on your registered email (****yz@gmail.com) and mobile number (*****0397)`}
               </div>
-            </>
+            </div>
           }
 
           {appStatus === '3' &&
-            <>
+            <div className={s.other_state}>
               <Image
-                onClick={() => setAppStatus('0')}
+                onClick={() => setAppStatus('4')}
                 aria-hidden
                 src='/assets/icons/error.svg'
                 alt="error"
@@ -87,7 +88,26 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
               <div className={s.action_btn}>
                 <button className='btn__q7s_l3z' type='button'>Try Again</button>
               </div>
-            </>
+            </div>
+          }
+
+          {appStatus === '4' &&
+            <div className={s.other_state}>
+              <Image
+                onClick={() => setAppStatus('0')}
+                aria-hidden
+                src='/assets/icons/error_icon.svg'
+                alt="error"
+                width={70}
+                height={70}
+              />
+              <h1 className={s.oneline}>{`Oops! There was a technical error.`}</h1>
+              <h1 className={s.linebreak}>{`Oops!`} <br /> {`There was a technical error.`}</h1>
+              <p>{`Please try again after some time.`}</p>
+              <div className={s.action_btn}>
+                <button className='btn__q7s_l3z' type='button'>Try Again</button>
+              </div>
+            </div>
           }
         </div>
 

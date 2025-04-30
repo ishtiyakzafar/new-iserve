@@ -76,7 +76,8 @@ const CreateDematAccount: React.FC<CreateDematAccountProps> = ({
   const startHyperKycJourney = async () => {
     try {
       const response = await axios.get('/api/auth/hyperverge/access-token');
-      // console.log('Response data:', response.data);
+
+      console.log('Response data:', response.data);
 
       if (response.data.statusCode === "200" && response.data.status === "success") {
         const accessToken = response.data.result.token

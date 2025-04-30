@@ -15,7 +15,7 @@ const FormHeading: React.FC<FormHeadingProps> = ({
       {applicationStep === '1' &&
         <>
           <p>Get your <span>FREE Demat Account</span> and start trading in 5 min!</p>
-          <small>Enter your mobile number to receive a one-time password(OTP) for verification</small>
+          <small>Enter your mobile number to receive a one-time password (OTP) for verification</small>
         </>
       }
 
@@ -24,7 +24,7 @@ const FormHeading: React.FC<FormHeadingProps> = ({
           <p><span>Verify OTP</span></p>
           {
             isUserEmail ?
-              <small>Enter 6 digit OTP sent to  <span>{email}</span> <Image onClick={() => setApplicationStep('3')} aria-hidden src='/assets/icons/edit.svg' alt="edit" width={15} height={14} /></small>
+              <small>Enter 6 digit OTP sent to <br /> <span>{email}</span> <Image onClick={() => setApplicationStep('3')} aria-hidden src='/assets/icons/edit.svg' alt="edit" width={15} height={14} /></small>
               :
               <small>Enter OTP sent to <span>+91 {mobile}</span> <Image onClick={() => setApplicationStep('1')} aria-hidden src='/assets/icons/edit.svg' alt="edit" width={15} height={14} /></small>
           }

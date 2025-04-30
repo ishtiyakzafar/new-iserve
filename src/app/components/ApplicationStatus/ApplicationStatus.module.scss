@@ -56,9 +56,37 @@
         }
       }
 
+      .note.allset {
+        background: #ECF7FF;
+        color: #3976A3;
+      }
+
       .action_btn {
         padding-top: 20px;
       }
+
+      .linebreak {
+        display: none;
+      }
+
+      @media(max-width:768px) {
+        .oneline {
+          display: none;
+        }
+
+        .linebreak {
+          display: block;
+        }
+      }
+
+      .other_state {
+        padding-top: 100px;
+
+        @media(max-width:768px) {
+          padding-top: unset;
+        }
+      }
+
     }
   }
 

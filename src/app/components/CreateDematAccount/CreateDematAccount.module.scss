@@ -15,6 +15,7 @@
     width: 100%;
     min-height: 100%;
     border-radius: 20px;
+    padding: 15px;
     padding-bottom: 100px;
   }
 
@@ -61,6 +62,7 @@
         text-align: center;
         margin-bottom: 65px;
         display: none;
+        padding-top: 10px;
 
         @media (max-width: 768px) {
           display: block;
@@ -73,11 +75,6 @@
 
       .logo.congrate {
         margin-bottom: 0px;
-      }
-
-      .input_group__z7d_m4b.consent__w5b_d4r.email {
-        justify-content: center;
-        margin-top: 0;
       }
 
       .line_divider {
