@@ -1,8 +1,9 @@
 import React from 'react';
 import { isValidEmail } from '@/lib/validation';
 import { EnterEmailProps } from '@/interfaces/account';
+import EmailMobileConsent from '../EmailMobileConsent/EmailMobileConsent';
 
-const EnterEmail: React.FC<EnterEmailProps> = ({ email, setEmail, isUserEmail, applicationStep }) => {
+const EnterEmail: React.FC<EnterEmailProps> = ({ email, setEmail, isUserEmail, applicationStep, consent, setConsent }) => {
   return (
     <>
       <div className="input_group__z7d_m4b">
@@ -19,13 +20,7 @@ const EnterEmail: React.FC<EnterEmailProps> = ({ email, setEmail, isUserEmail, a
       </div>
 
       {isUserEmail && isValidEmail(email) && applicationStep === '3' &&
-        <div className="input_group__z7d_m4b consent__w5b_d4r">
-          <label htmlFor="email_consent">This email belongs to?</label>
-          <select name="email_consent" id="email_consent">
-            <option value="self">Self</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
+        <EmailMobileConsent type="email" consent={consent} setConsent={setConsent} />
       }
     </>
   )

@@ -1,14 +1,9 @@
-"use client";
 import useScreenWidth from "@/app/hooks/useScreenWidth";
-import { GoogleLoginButtonProps } from "@/interfaces/account";
+import { GoogleJwtPayload, GoogleLoginButtonProps } from "@/interfaces/account";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
-type GoogleJwtPayload = {
-  email: string;
-};
-
-const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ setApplicationStep, setEmail }) => {
+const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ setApplicationStep, setEmail, setGoogleUser, setConsent }) => {
   const screenWidth = useScreenWidth();
 
   return (
@@ -16,7 +11,8 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ setApplicationSte
       <GoogleLogin
         onSuccess={(response) => {
           const userData = jwtDecode<GoogleJwtPayload>(response.credential!);
-          console.log("Login Success:", userData);
+          setConsent("SE");
+          setGoogleUser(userData);
           setApplicationStep("4");
           setEmail(userData.email);
         }}

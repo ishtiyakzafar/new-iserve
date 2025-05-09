@@ -20,7 +20,8 @@ const HeroDetailSection: React.FC<HeroDetailSectionProps> = ({ isAccountVerified
 
         {!isAccountVerified ?
           <>
-            <h1>Explore a New World of Investment Opportunities!</h1>
+            <h1 className={s.desk_heading}>Explore a New World of Investment Opportunities!</h1>
+            <h1 className={s.mobile_heading}>Explore a New <br /> World of Investment <br /> Opportunities!</h1>
             <div className={s.hero_image}>
               <Image
                 priority

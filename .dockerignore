@@ -1,0 +1,36 @@
+# Node modules (reinstalled in container)
+node_modules
+
+# Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Local development env files (if not needed in production image)
+.env.local
+.env.development.local
+.env.test.local
+
+# Git files
+.git
+.gitignore
+
+# Docker files (optional, if not used inside the container)
+Dockerfile
+.dockerignore
+
+# Editor/IDE settings
+.vscode
+*.swp
+*.swo
+.idea
+
+# Output directories
+.next
+out
+dist
+
+# OS-specific
+.DS_Store
+Thumbs.db

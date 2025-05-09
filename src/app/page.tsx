@@ -4,7 +4,8 @@ import HeroDetailSection from "./components/HeroDetailSection/HeroDetailSection"
 import CreateDematAccount from "./components/CreateDematAccount/CreateDematAccount";
 import ServicesSection from "./components/ServicesSection/ServicesSection";
 import Copyright from "./components/Copyright/Copyright";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+
 
 export default function Home() {
   const [applicationStep, setApplicationStep] = useState('1');
@@ -21,14 +22,16 @@ export default function Home() {
               appStatus={appStatus}
               applicationStep={applicationStep}
             />
-            <CreateDematAccount
-              applicationStep={applicationStep}
-              setApplicationStep={setApplicationStep}
-              isAccountVerified={isAccountVerified}
-              setIsAccountVerified={setIsAccountVerified}
-              appStatus={appStatus}
-              setAppStatus={setAppStatus}
-            />
+            <Suspense>
+              <CreateDematAccount
+                applicationStep={applicationStep}
+                setApplicationStep={setApplicationStep}
+                isAccountVerified={isAccountVerified}
+                setIsAccountVerified={setIsAccountVerified}
+                appStatus={appStatus}
+                setAppStatus={setAppStatus}
+              />
+            </Suspense>
             <div className={applicationStep === '1' ? s.our_services : !isAccountVerified ? `${s.our_services} ${s.hide}` : `${s.our_services} ${s.isVerified}`}>
               <ServicesSection />
             </div>

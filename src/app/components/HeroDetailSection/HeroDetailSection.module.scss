@@ -3,6 +3,10 @@
     text-align: center;
     padding-top: 40px;
 
+    @media (max-width: 768px) {
+      padding-top: 15px;
+    }
+
     .iifl_logo {
       @media (max-width: 768px) {
         width: 171px;
@@ -10,7 +14,8 @@
       }
     }
 
-    h1 {
+    .desk_heading,
+    .mobile_heading {
       margin: auto;
       margin-top: 50px;
       margin-bottom: 10px;
@@ -25,10 +30,19 @@
       -webkit-text-fill-color: transparent;
 
       @media (max-width: 768px) {
+        display: none;
         margin-top: 25px;
         width: 100%;
         font-size: 28px;
         line-height: 36px;
+      }
+    }
+
+    .mobile_heading {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
       }
     }
 

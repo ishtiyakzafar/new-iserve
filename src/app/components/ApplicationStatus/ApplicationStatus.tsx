@@ -5,7 +5,7 @@ import OurPlatform from '../OurPlatform/OurPlatform';
 import useScreenWidth from '@/app/hooks/useScreenWidth';
 
 
-const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; setAppStatus: (status: string) => void }) => {
+const ApplicationStatus = ({ appStatus }: { appStatus: string }) => {
   const screenWidth = useScreenWidth();
 
   return (
@@ -17,7 +17,6 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
             <>
               <Image
                 unoptimized
-                onClick={() => setAppStatus('1')}
                 aria-hidden
                 src='/assets/images/cong.gif'
                 alt="cong"
@@ -39,7 +38,6 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
           {appStatus === '1' &&
             <>
               <Image
-                onClick={() => setAppStatus('2')}
                 aria-hidden
                 src='/assets/icons/check.svg'
                 alt="check"
@@ -58,7 +56,6 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
           {appStatus === '2' &&
             <div className={s.other_state}>
               <Image
-                onClick={() => setAppStatus('3')}
                 aria-hidden
                 src='/assets/icons/pending.svg'
                 alt="pending"
@@ -76,7 +73,6 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
           {appStatus === '3' &&
             <div className={s.other_state}>
               <Image
-                onClick={() => setAppStatus('4')}
                 aria-hidden
                 src='/assets/icons/error.svg'
                 alt="error"
@@ -94,7 +90,6 @@ const ApplicationStatus = ({ appStatus, setAppStatus }: { appStatus: string; set
           {appStatus === '4' &&
             <div className={s.other_state}>
               <Image
-                onClick={() => setAppStatus('0')}
                 aria-hidden
                 src='/assets/icons/error_icon.svg'
                 alt="error"

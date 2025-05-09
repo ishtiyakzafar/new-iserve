@@ -1,8 +1,9 @@
 import { EnterMobileProps } from '@/interfaces/account';
 import s from "./EnterMobile.module.scss";
 import { isValidMobile } from '@/lib/validation';
+import EmailMobileConsent from '../EmailMobileConsent/EmailMobileConsent';
 
-const EnterMobile: React.FC<EnterMobileProps> = ({ mobile, setMobile, applicationStep }) => {
+const EnterMobile: React.FC<EnterMobileProps> = ({ mobile, setMobile, applicationStep, setConsent, consent }) => {
   return (
     <>
       <div className="input_group__z7d_m4b">
@@ -27,13 +28,7 @@ const EnterMobile: React.FC<EnterMobileProps> = ({ mobile, setMobile, applicatio
       </div>
 
       {isValidMobile(mobile) && applicationStep === '1' &&
-        <div className="input_group__z7d_m4b consent__w5b_d4r">
-          <label htmlFor="consent">This number belongs to?</label>
-          <select name="consent" id="consent">
-            <option value="self">Self</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
+        <EmailMobileConsent type="mobile" consent={consent} setConsent={setConsent} />
       }
     </>
   )
